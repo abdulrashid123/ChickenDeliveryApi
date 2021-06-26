@@ -127,8 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-AUTH_TOKEN = '0bedd03593ecabe1ce9a2978e6a79124'
-SID = 'AC491e60f56f9c0b334fc82dfebc2b1818'
+AUTH_TOKEN = ''
+SID = ''
 PHONE_NUMBER = '+18327348495'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
