@@ -42,19 +42,23 @@ class MobileRegisterLoginView(APIView):
     def post(self,request):
         number = request.data.get('mobile_no',None)
         if number:
-            u,created = User.objects.get_or_create(mobile_no=number,username='random')
+            u,created = User.objects.get_or_create(mobile_no=number,username=number)
             otp = str(randint(111111, 999999))
             u.otp = otp
             u.save()
             account_sid = settings.SID
             auth_token = settings.AUTH_TOKEN
             client = Client(account_sid, auth_token)
-            message = client.messages.create(
+            try:
+                message = client.messages.create(
 
-                body=f'Given otp is {otp}',
-                from_=settings.PHONE_NUMBER,
-                to='+918237544102'
-            )
+                    body=f'Given otp is {otp}',
+                    from_=settings.PHONE_NUMBER,
+                    to='+91'+number
+                )
+            except Exception as e:
+                print(e)
+                return Response({'error':str(e)},status=status.HTTP_400_BAD_REQUEST)
             print(message.sid)
             return Response({'errorExists':False},status=status.HTTP_201_CREATED)
         return Response({'errorExists':True},status=status.HTTP_400_BAD_REQUEST)
