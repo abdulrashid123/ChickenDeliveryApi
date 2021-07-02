@@ -43,6 +43,9 @@ class Chicken(models.Model):
     fresh=models.BooleanField(default=True)
     approx_time = models.PositiveSmallIntegerField(default=30)
     description = models.TextField(blank=True,null=True)
+    liver = models.BooleanField(default=True)
+    intestine = models.BooleanField(default=True)
+    skin = models.BooleanField(default=True)
     def __str__(self):
         return self.name
 
