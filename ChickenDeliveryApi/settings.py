@@ -150,8 +150,8 @@ else:
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-AUTH_TOKEN = '83cf9777374e49d0b24c97cc1c83d97f'
-SID = 'AC491e60f56f9c0b334fc82dfebc2b1818'
+AUTH_TOKEN = ''
+SID = ''
 PHONE_NUMBER = '+18327348495'
 
 
